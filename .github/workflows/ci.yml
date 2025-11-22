@@ -31,7 +31,6 @@ jobs:
       - name: Validar compilación TypeScript
         run: npm run build
 
-
   docker:
     name: Etapa de Docker
     runs-on: ubuntu-latest
@@ -122,9 +121,6 @@ jobs:
 
             echo 'Running new container...'
             docker run -d --name catalogs -p 80:3000 \
-            -e AWS_REGION=${{ secrets.AWS_REGION }} \
-            -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
-            -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
             -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
             $FULL_IMAGE_NAME
           "
